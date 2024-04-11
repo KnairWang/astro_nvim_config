@@ -1,5 +1,8 @@
 if vim.g.neovide then
-  return {}
+  return {
+    'declancm/cinnamon.nvim',
+    enabled = false,
+  }
 else
   return {
     'declancm/cinnamon.nvim',
