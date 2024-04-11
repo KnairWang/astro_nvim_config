@@ -35,5 +35,4 @@ return {
         wrap = true,
         scrolloff = 10,
     },
-    colorscheme = "dracula",
 }
