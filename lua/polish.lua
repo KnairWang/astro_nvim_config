@@ -28,7 +28,20 @@ if vim.g.neovide then
   vim.g.neovide_cursor_vfx_particle_curl = 1.0 -- Only for the railgun vfx mode.
 end
 
+-- disable mouse
 vim.opt.mouse = ""
+
+-- always show mode
 vim.opt.showmode = true
+
+-- always show sign column
+vim.opt.signcolumn = "yes"
+
+-- line number width
+vim.opt.numberwidth = 6
+
+-- wrap long text
 vim.opt.wrap = true
+
+-- scroll off
 vim.opt.scrolloff = 10
