@@ -18,12 +18,14 @@ if vim.g.neovide then
   vim.g.neovide_cursor_animate_command_line = true
   vim.g.neovide_cursor_unfocused_outline_width = 0.125
 
+  vim.g.neovide_cursor_smooth_blink = true
+
   -- "railgun", "torpedo", "pixiedust", "sonicboom", "ripple", "wireframe"
-  vim.g.neovide_cursor_vfx_mode = "torpedo"
+  vim.g.neovide_cursor_vfx_mode = "pixiedust"
   vim.g.neovide_cursor_vfx_opacity = 200.0 -- Sets the transparency of the generated particles.
-  vim.g.neovide_cursor_vfx_particle_lifetime = 1.0 -- Sets the amount of time the generated particles should survive.
+  vim.g.neovide_cursor_vfx_particle_lifetime = 3.0 -- Sets the amount of time the generated particles should survive.
   vim.g.neovide_cursor_vfx_particle_density = 32.0 -- Sets the number of generated particles.
-  vim.g.neovide_cursor_vfx_particle_speed = 10.0 -- Sets the speed of particle movement.
+  vim.g.neovide_cursor_vfx_particle_speed = 15.0 -- Sets the speed of particle movement.
   vim.g.neovide_cursor_vfx_particle_phase = 1.5 -- Only for the railgun vfx mode.
   vim.g.neovide_cursor_vfx_particle_curl = 1.0 -- Only for the railgun vfx mode.
 end
