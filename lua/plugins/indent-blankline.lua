@@ -31,7 +31,7 @@ return {
   opts = {
     indent = {
       -- char = { " " },
-      char = { "┊" },
+      -- char = { "┊" },
       -- char = { "○" },
       -- char = { "⩇" },
       -- char = { "➀", "➁", "➂", "➃", "➄", "➅", "➆" },
@@ -46,7 +46,7 @@ return {
       show_start = false,
       show_end = false,
       show_exact_scope = false,
-      char = { "┋" },
+      -- char = { "┋" },
       -- char = { "┃" },
       -- char = { "⭗" },
       -- char = { "⩆" },
@@ -54,5 +54,5 @@ return {
       -- highlight = highlight,
       -- highlight = { "Scope" }
     },
-  }
+  },
 }

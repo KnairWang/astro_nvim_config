@@ -3,11 +3,11 @@ return {
   opts = {
     filesystem = {
       filtered_items = {
-        visible = true
-      }
+        visible = true,
+      },
     },
     window = {
-      width = 60
-    }
-  }
+      width = 40,
+    },
+  },
 }
