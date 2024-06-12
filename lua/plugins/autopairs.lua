@@ -10,7 +10,7 @@ return {
     },
   },
   config = function(plugin, opts)
-    require "astronvim.plugins.configs.nvim-autopairs"(plugin, opts)
+    require "astronvim.plugins.configs.nvim-autopairs" (plugin, opts)
 
     local npairs = require "nvim-autopairs"
     local Rule = require "nvim-autopairs.rule"
@@ -20,26 +20,26 @@ return {
 
     npairs.add_rules {
       Rule("<", ">", "rust")
-        :with_pair(cond.not_after_regex "%w")
-        :with_pair(cond.before_text "::")
-        :with_cr(cond.none())
-        :with_move(move_with_end_pair),
+          :with_pair(cond.not_after_regex "%w")
+          :with_pair(cond.before_text "::")
+          :with_cr(cond.none())
+          :with_move(move_with_end_pair),
     }
     npairs.add_rules {
       Rule("<", ">", "rust")
-        :with_pair(cond.not_after_regex "%w")
-        :with_pair(cond.before_regex "%w")
-        :with_cr(cond.none())
-        :with_move(move_with_end_pair),
+          :with_pair(cond.not_after_regex "%w")
+          :with_pair(cond.before_regex "%w")
+          :with_cr(cond.none())
+          :with_move(move_with_end_pair),
     }
 
     npairs.add_rules {
       Rule("<", ">", "rust")
-        :with_pair(cond.before_text "<")
-        :with_pair(cond.after_text ">")
-        :with_pair(cond.not_after_regex "%w")
-        :with_cr(cond.none())
-        :with_move(move_with_end_pair),
+          :with_pair(cond.before_text "<")
+          :with_pair(cond.after_text ">")
+          :with_pair(cond.not_after_regex "%w")
+          :with_cr(cond.none())
+          :with_move(move_with_end_pair),
     }
   end,
 }
