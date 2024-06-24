@@ -55,6 +55,13 @@ return {
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
       -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
       gleam = function(_, opts) require("lspconfig").gleam.setup(opts) end,
+      typos_lsp = function(_, _)
+        require("lspconfig").typos_lsp.setup {
+          init_options = {
+            diagnosticSeverity = "Info",
+          },
+        }
+      end,
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
