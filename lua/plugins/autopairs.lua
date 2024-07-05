@@ -4,7 +4,7 @@ return {
   "windwp/nvim-autopairs",
   event = "InsertEnter",
   opts = {
-    ignored_next_char = "[%w%.%(%{%[]",
+    ignored_next_char = "[%w%.%(%{%[<]",
     fast_wrap = {
       chars = { "{", "[", "(", '"', "'", "`" },
     },
@@ -16,19 +16,19 @@ return {
     local Rule = require "nvim-autopairs.rule"
     local cond = require "nvim-autopairs.conds"
 
-    npairs.add_rules {
-      Rule("<", ">", "rust")
-          :with_pair(cond.before_text("::"))
-          :with_pair(cond.before_regex("%w"))
-          :with_pair(cond.not_after_regex("%w"))
-          :with_move(cond.after_text(">"))
-          :with_cr(cond.none()),
-    }
     -- npairs.add_rules {
     --   Rule("<", ">", "rust")
-    --       :with_pair(cond.before_regex("%w"))
+    --       :with_pair(cond.before_text("::"))
     --       :with_pair(cond.not_after_regex("%w"))
-    --       :with_move(cond.after_text(">"))
+    --       :with_move(cond.done())
+    --       :with_cr(cond.none()),
+    -- }
+
+    -- npairs.add_rules {
+    --   Rule("<", ">", "rust")
+    --       :with_pair(cond.before_regex("%w+"))
+    --       :with_pair(cond.not_after_regex("%w"))
+    --       :with_move(function(opts) return true end)
     --       :with_cr(cond.none()),
     -- }
 
