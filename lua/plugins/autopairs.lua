@@ -16,30 +16,28 @@ return {
     local Rule = require "nvim-autopairs.rule"
     local cond = require "nvim-autopairs.conds"
 
-    local function move_with_end_pair(opts) return opts.char == opts.rule.end_pair end
-
     npairs.add_rules {
       Rule("<", ">", "rust")
-          :with_pair(cond.not_after_regex "%w")
-          :with_pair(cond.before_text "::")
-          :with_cr(cond.none())
-          :with_move(move_with_end_pair),
+          :with_pair(cond.before_text("::"))
+          :with_pair(cond.not_after_regex("%w"))
+          :with_move(cond.after_text(">"))
+          :with_cr(cond.none()),
     }
     npairs.add_rules {
       Rule("<", ">", "rust")
-          :with_pair(cond.not_after_regex "%w")
-          :with_pair(cond.before_regex "%w")
-          :with_cr(cond.none())
-          :with_move(move_with_end_pair),
+          :with_pair(cond.before_regex("%w"))
+          :with_pair(cond.not_after_regex("%w"))
+          :with_move(cond.after_text(">"))
+          :with_cr(cond.none()),
     }
 
-    npairs.add_rules {
-      Rule("<", ">", "rust")
-          :with_pair(cond.before_text "<")
-          :with_pair(cond.after_text ">")
-          :with_pair(cond.not_after_regex "%w")
-          :with_cr(cond.none())
-          :with_move(move_with_end_pair),
-    }
+    -- npairs.add_rules {
+    --   Rule("<", ">", "rust")
+    --       :with_pair(cond.before_text("<"))
+    --       :with_pair(cond.after_text(">"))
+    --       :with_pair(cond.not_after_regex("%w"))
+    --       :with_move(cond.after_text(">"))
+    --       :with_cr(cond.none()),
+    -- }
   end,
 }
