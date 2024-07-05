@@ -19,17 +19,18 @@ return {
     npairs.add_rules {
       Rule("<", ">", "rust")
           :with_pair(cond.before_text("::"))
-          :with_pair(cond.not_after_regex("%w"))
-          :with_move(cond.after_text(">"))
-          :with_cr(cond.none()),
-    }
-    npairs.add_rules {
-      Rule("<", ">", "rust")
           :with_pair(cond.before_regex("%w"))
           :with_pair(cond.not_after_regex("%w"))
           :with_move(cond.after_text(">"))
           :with_cr(cond.none()),
     }
+    -- npairs.add_rules {
+    --   Rule("<", ">", "rust")
+    --       :with_pair(cond.before_regex("%w"))
+    --       :with_pair(cond.not_after_regex("%w"))
+    --       :with_move(cond.after_text(">"))
+    --       :with_cr(cond.none()),
+    -- }
 
     -- npairs.add_rules {
     --   Rule("<", ">", "rust")
