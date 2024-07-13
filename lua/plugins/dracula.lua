@@ -1,5 +1,5 @@
 return {
   'dracula/vim',
-  as = 'dracula',
+  as = 'dracula_official',
   enabled = true,
 }

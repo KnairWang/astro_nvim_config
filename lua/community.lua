@@ -7,8 +7,19 @@ if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 ---@type LazySpec
 return {
   "AstroNvim/astrocommunity",
+  { import = "astrocommunity.colorscheme.dracula-nvim" },
+  { import = "astrocommunity.pack.cs" },
+  { import = "astrocommunity.pack.elixir-phoenix" },
+  { import = "astrocommunity.pack.gleam" },
+  { import = "astrocommunity.pack.html-css" },
+  { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.pack.python" },
+  { import = "astrocommunity.pack.rust" },
+  { import = "astrocommunity.pack.toml" },
+  { import = "astrocommunity.pack.typescript" },
+  { import = "astrocommunity.pack.xml" },
+  { import = "astrocommunity.pack.yaml" },
   { import = "astrocommunity.recipes.vscode-icons" },
-
   -- import/override with your plugins folder
 }
