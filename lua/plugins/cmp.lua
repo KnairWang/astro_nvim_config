@@ -1,3 +1,5 @@
+-- if true then return {} end
+
 local cmp = require "cmp"
 local types = require("cmp.types")
 local luasnip = require "luasnip"
@@ -91,17 +93,17 @@ return {
         -- cmp.config.compare.locality,
       },
     },
-    mapping = {
-      ["<Tab>"] = cmp.mapping(function(fallback)
-        -- if luasnip.expand_or_jumpable() then
-        --   luasnip.expand_or_jump()
-        -- else
-        fallback()
-        -- end
-      end, { "i", "s" }),
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
-        fallback()
-      end, { "i", "s" }),
-    },
+    -- mapping = {
+    --   ["<Tab>"] = cmp.mapping(function(fallback)
+    --     -- if luasnip.expand_or_jumpable() then
+    --     --   luasnip.expand_or_jump()
+    --     -- else
+    --     fallback()
+    --     -- end
+    --   end, { "i", "s" }),
+    --   ["<S-Tab>"] = cmp.mapping(function(fallback)
+    --     fallback()
+    --   end, { "i", "s" }),
+    -- },
   }
 }
