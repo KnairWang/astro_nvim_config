@@ -7,7 +7,7 @@ return {
   config = function()
     require("lspconfig").typos_lsp.setup {
       init_options = {
-        diagnosticSeverity = "Info",
+        diagnosticSeverity = "hint",
       },
     }
   end,
