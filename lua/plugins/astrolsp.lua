@@ -39,7 +39,7 @@ return {
     -- enable servers that you already have installed without mason
     servers = {
       -- "pyright"
-      "gleam",
+      -- "gleam",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
@@ -54,11 +54,11 @@ return {
       -- the key is the server that is being setup with `lspconfig`
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
       -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
-      gleam = function(_, opts) require("lspconfig").gleam.setup(opts) end,
+      -- gleam = function(_, opts) require("lspconfig").gleam.setup(opts) end,
       typos_lsp = function(_, _)
         require("lspconfig").typos_lsp.setup {
           init_options = {
-            diagnosticSeverity = "Info",
+            diagnosticSeverity = "hint",
           },
         }
       end,
