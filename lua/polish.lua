@@ -21,7 +21,7 @@ if vim.g.neovide then
   vim.g.neovide_cursor_smooth_blink = true
 
   -- "railgun", "torpedo", "pixiedust", "sonicboom", "ripple", "wireframe"
-  vim.g.neovide_cursor_vfx_mode = "pixiedust"
+  vim.g.neovide_cursor_vfx_mode = "sonicboom"
   vim.g.neovide_cursor_vfx_opacity = 200.0 -- Sets the transparency of the generated particles.
   vim.g.neovide_cursor_vfx_particle_lifetime = 3.0 -- Sets the amount of time the generated particles should survive.
   vim.g.neovide_cursor_vfx_particle_density = 32.0 -- Sets the number of generated particles.
