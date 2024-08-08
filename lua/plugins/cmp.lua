@@ -76,6 +76,8 @@ return {
         cmp.config.compare.exact,
         prioritize(types.lsp.CompletionItemKind.Snippet, false),
         cmp.config.compare.sort_text,
+        prioritize(types.lsp.CompletionItemKind.Class, true),
+        prioritize(types.lsp.CompletionItemKind.Struct, true),
         prioritize(types.lsp.CompletionItemKind.Field, true),
         prioritize(types.lsp.CompletionItemKind.Variable, true),
         prioritize(types.lsp.CompletionItemKind.Function, true),
