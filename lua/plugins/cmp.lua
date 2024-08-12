@@ -1,7 +1,7 @@
 -- if true then return {} end
 
 local cmp = require "cmp"
-local types = require("cmp.types")
+local types = require "cmp.types"
 local luasnip = require "luasnip"
 
 -- Text = 1,
@@ -57,18 +57,33 @@ local function lexicographical(entry1, entry2)
   return nil
 end
 
-local function entry_filter(entry, cts)
-  return true
-end
+local function entry_filter(_entry, _ctx) return true end
 
 return {
   "hrsh7th/nvim-cmp",
   opts = {
+    formatting = {
+      fields = { "kind", "abbr", "menu" },
+      format = function(entry, vim_item)
+        local kind = require("lspkind").cmp_format { mode = "symbol_text", maxwidth = 30 }(entry, vim_item)
+        local strings = vim.split(kind.kind, "%s", { trimempty = true })
+        kind.kind = " " .. (strings[1] or "") .. " "
+        kind.menu = "  (" .. (strings[2] or "") .. ")"
+
+        return kind
+      end,
+
+      -- format = function(_entry, vim_item)
+      --   vim_item.menu = ""
+      --   -- vim_item.kind = ""
+      --   return vim_item
+      -- end,
+    },
     sources = cmp.config.sources {
       { name = "nvim_lsp", priority = 1000, entry_filter = entry_filter },
-      { name = "luasnip",  priority = 750 },
+      { name = "luasnip", priority = 750 },
       -- { name = "buffer", priority = 500 },
-      { name = "path",     priority = 250 },
+      { name = "path", priority = 250 },
     },
     sorting = {
       priority_weight = 2,
@@ -107,5 +122,5 @@ return {
     --     fallback()
     --   end, { "i", "s" }),
     -- },
-  }
+  },
 }
