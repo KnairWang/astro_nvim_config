@@ -59,13 +59,27 @@ end
 
 local function entry_filter(_entry, _ctx) return true end
 
+-- local function entry_filter_sleep(_entry, _ctx)
+--   local timer = vim.uv.new_timer()
+--   -- Waits 1000ms, then repeats every 750ms until timer:close().
+--   timer:start(1000, 0, function()
+--       timer:stop()
+--       timer:close() -- Always close handles to avoid leaks.
+--   end)
+-- end
+
 return {
   "hrsh7th/nvim-cmp",
   opts = {
+    performance = {
+      debounce = 50,
+      throttle = 100,
+      fetching_timeout = 10 * 1000,
+    },
     formatting = {
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
-        local kind = require("lspkind").cmp_format { mode = "symbol_text", maxwidth = 30 }(entry, vim_item)
+        local kind = require("lspkind").cmp_format { mode = "symbol_text", maxwidth = 30 } (entry, vim_item)
         local strings = vim.split(kind.kind, "%s", { trimempty = true })
         kind.kind = " " .. (strings[1] or "") .. " "
         kind.menu = "  (" .. (strings[2] or "") .. ")"
@@ -81,9 +95,12 @@ return {
     },
     sources = cmp.config.sources {
       { name = "nvim_lsp", priority = 1000, entry_filter = entry_filter },
-      { name = "luasnip", priority = 100 },
+      -- { name = "nvim_lsp" },
+      { name = "luasnip", priority = 750 },
+      -- { name = "luasnip" },
       -- { name = "buffer", priority = 500 },
       { name = "path", priority = 250 },
+      -- { name = "path" },
     },
     sorting = {
       priority_weight = 2,
