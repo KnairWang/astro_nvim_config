@@ -24,11 +24,13 @@ return {
     npairs.add_rules({
       Rule(start_char, end_char, "rust")
           :with_pair(cond.before_text("::"), 2)
+          :with_pair(cond.not_after_regex("%w"), 1)
           :with_move(function(op) return op.char == end_char end)
           :with_del(cond.done()),
 
       Rule(start_char, end_char, "rust")
           :with_pair(cond.before_regex("%w"), 1)
+          :with_pair(cond.not_after_regex("%w"), 1)
           :with_move(function(op) return op.char == end_char end)
           :with_del(cond.done()),
     })
