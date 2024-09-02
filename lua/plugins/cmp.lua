@@ -74,7 +74,7 @@ return {
     performance = {
       debounce = 50,
       throttle = 100,
-      fetching_timeout = 10 * 1000,
+      fetching_timeout = 2 * 1000,
     },
     formatting = {
       fields = { "kind", "abbr", "menu" },
@@ -94,12 +94,12 @@ return {
       -- end,
     },
     sources = cmp.config.sources {
-      { name = "nvim_lsp", priority = 1000, group_index = 1 },
+      { name = "nvim_lsp", priority = 1000},
       -- { name = "nvim_lsp" },
-      { name = "luasnip", priority = 250, group_index = 3 },
+      { name = "luasnip", priority = 250},
       -- { name = "luasnip" },
       -- { name = "buffer", priority = 500 },
-      { name = "path", priority = 750, group_index = 2 },
+      { name = "path", priority = 750},
       -- { name = "path" },
     },
     sorting = {
