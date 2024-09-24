@@ -4,6 +4,8 @@
 -- We import this file in `lazy_setup.lua` before the `plugins/` folder.
 -- This guarantees that the specs are processed before any user plugins.
 
+-- https://github.com/AstroNvim/AstroCommunity
+
 ---@type LazySpec
 return {
   "AstroNvim/astrocommunity",
@@ -12,6 +14,7 @@ return {
   { import = "astrocommunity.pack.cs" },
   -- { import = "astrocommunity.pack.elixir-phoenix" },
   { import = "astrocommunity.pack.gleam" },
+  { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.html-css" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.lua" },
