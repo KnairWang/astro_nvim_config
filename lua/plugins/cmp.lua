@@ -93,21 +93,24 @@ return {
       --   return vim_item
       -- end,
     },
-    sources = cmp.config.sources {
-      { name = "nvim_lsp", priority = 1000},
-      -- { name = "nvim_lsp" },
-      { name = "luasnip", priority = 250},
-      -- { name = "luasnip" },
-      -- { name = "buffer", priority = 500 },
-      { name = "path", priority = 750},
-      -- { name = "path" },
-    },
+
+    -- cmp.config.sources 
+    -- sources = {
+    --   { name = "nvim_lsp", priority = 1000},
+    --   -- { name = "nvim_lsp" },
+    --   { name = "luasnip", priority = 250},
+    --   -- { name = "luasnip" },
+    --   -- { name = "buffer", priority = 500 },
+    --   { name = "path", priority = 750},
+    --   -- { name = "path" },
+    -- },
     sorting = {
       priority_weight = 2,
       comparators = {
         cmp.config.compare.exact,
+
         prioritize(types.lsp.CompletionItemKind.Snippet, false),
-        -- cmp.config.compare.sort_text,
+
         prioritize(types.lsp.CompletionItemKind.Field, true),
         prioritize(types.lsp.CompletionItemKind.Property, true),
         prioritize(types.lsp.CompletionItemKind.Method, true),
@@ -117,16 +120,20 @@ return {
         prioritize(types.lsp.CompletionItemKind.Class, true),
         prioritize(types.lsp.CompletionItemKind.Struct, true),
         prioritize(types.lsp.CompletionItemKind.Module, true),
-        cmp.config.compare.locality,
-        cmp.config.compare.kind,
-        cmp.config.compare.order,
 
-        lexicographical,
-        -- cmp.config.compare.score,
+        cmp.config.compare.kind,
+
+        cmp.config.compare.scopes,
+        -- cmp.config.compare.sort_text,
+        -- cmp.config.compare.locality,
+        -- cmp.config.compare.order,
+
+        cmp.config.compare.score,
         -- cmp.config.compare.length,
         -- cmp.config.compare.offset,
-        -- cmp.config.compare.scopes,
         -- cmp.config.compare.recently_used,
+
+        lexicographical,
       },
     },
     mapping = {
