@@ -7,14 +7,12 @@
 -- https://github.com/AstroNvim/AstroCommunity
 
 ---@type LazySpec
-return {
+local community_imports = {
   "AstroNvim/astrocommunity",
   -- { import = "astrocommunity.recipes.vscode" },
   { import = "astrocommunity.motion.nvim-surround" },
-  { import = "astrocommunity.pack.cs" },
-  -- { import = "astrocommunity.pack.elixir-phoenix" },
+  -- { import = "astrocommunity.pack.cs" },
   { import = "astrocommunity.pack.gleam" },
-  { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.html-css" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.lua" },
@@ -27,3 +25,13 @@ return {
   { import = "astrocommunity.recipes.vscode-icons" },
   -- import/override with your plugins folder
 }
+
+if vim.fn.executable("go") == 1 then
+  table.insert(community_imports, { import = "astrocommunity.pack.go" })
+end
+
+-- if vim.fn.executable("elixir") == 1 and vim.fn.executable("iex") == 1 then
+--   table.insert(community_imports, { import = "astrocommunity.pack.elixir-phoenix" })
+-- end
+
+return community_imports
