@@ -57,45 +57,39 @@ local function lexicographical(entry1, entry2)
   return nil
 end
 
-local function entry_filter(_entry, _ctx) return true end
+local function abbreviateString(str, maxwidth, ellipsis_char)
+  if vim.fn.strchars(str) > maxwidth then
+    str = vim.fn.strcharpart(str, 0, maxwidth) .. (ellipsis_char ~= nil and ellipsis_char or "")
+  end
 
--- local function entry_filter_sleep(_entry, _ctx)
---   local timer = vim.uv.new_timer()
---   -- Waits 1000ms, then repeats every 750ms until timer:close().
---   timer:start(1000, 0, function()
---       timer:stop()
---       timer:close() -- Always close handles to avoid leaks.
---   end)
--- end
+  return str
+end
 
 return {
   "hrsh7th/nvim-cmp",
   opts = {
-    performance = {
-      debounce = 50,
-      throttle = 100,
-      fetching_timeout = 2 * 1000,
+    mapping = {
+      ["<Tab>"] = cmp.mapping(function(fallback)
+        -- if luasnip.expand_or_jumpable() then
+        --   luasnip.expand_or_jump()
+        -- else
+        fallback()
+        -- end
+      end, { "i", "s" }),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+        fallback()
+      end, { "i", "s" }),
     },
-    formatting = {
-      fields = { "kind", "abbr", "menu" },
-      format = function(entry, vim_item)
-        local kind = require("lspkind").cmp_format { mode = "symbol_text", maxwidth = 30 } (entry, vim_item)
-        local strings = vim.split(kind.kind, "%s", { trimempty = true })
-        kind.kind = " " .. (strings[1] or "") .. " "
-        kind.menu = "  (" .. (strings[2] or "") .. ")"
+  },
+  config = function(plugin, opts)
+    local format = opts.formatting.format;
+    opts.formatting.format = function(entry, vim_item)
+      local item = format(entry, vim_item)
+      item.menu = abbreviateString(item.menu, 60, "...")
+      return item
+    end
 
-        return kind
-      end,
-
-      -- format = function(_entry, vim_item)
-      --   vim_item.menu = ""
-      --   -- vim_item.kind = ""
-      --   return vim_item
-      -- end,
-    },
-
-    -- cmp.config.sources 
-    -- sources = {
+    -- opts.sources = {
     --   { name = "nvim_lsp", priority = 1000},
     --   -- { name = "nvim_lsp" },
     --   { name = "luasnip", priority = 250},
@@ -103,8 +97,15 @@ return {
     --   -- { name = "buffer", priority = 500 },
     --   { name = "path", priority = 750},
     --   -- { name = "path" },
-    -- },
-    sorting = {
+    -- }
+
+    opts.performance = {
+      debounce = 50,
+      throttle = 100,
+      fetching_timeout = 2 * 1000,
+    }
+
+    opts.sorting = {
       priority_weight = 2,
       comparators = {
         cmp.config.compare.exact,
@@ -135,18 +136,8 @@ return {
 
         lexicographical,
       },
-    },
-    mapping = {
-      ["<Tab>"] = cmp.mapping(function(fallback)
-        -- if luasnip.expand_or_jumpable() then
-        --   luasnip.expand_or_jump()
-        -- else
-        fallback()
-        -- end
-      end, { "i", "s" }),
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
-        fallback()
-      end, { "i", "s" }),
-    },
-  },
+    }
+
+    require "astronvim.plugins.configs.cmp" (plugin, opts)
+  end
 }
