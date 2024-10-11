@@ -44,6 +44,11 @@ end
 if vim.fn.executable("lua") == 1 then
   table.insert(community_imports, { import = "astrocommunity.pack.lua" })
 end
+
+if vim.fn.executable("zig") == 1 then
+  table.insert(community_imports, { import = "astrocommunity.pack.zig" })
+end
+
 -- if vim.fn.executable("elixir") == 1 and vim.fn.executable("iex") == 1 then
 --   table.insert(community_imports, { import = "astrocommunity.pack.elixir-phoenix" })
 -- end
