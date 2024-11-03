@@ -9,6 +9,7 @@
 ---@type LazySpec
 local community_imports = {
   "AstroNvim/astrocommunity",
+  { import = "astrocommunity.recipes.telescope-lsp-mappings" },
   -- { import = "astrocommunity.recipes.vscode" },
   { import = "astrocommunity.motion.nvim-surround" },
   -- { import = "astrocommunity.pack.cs" },
