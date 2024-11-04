@@ -57,10 +57,6 @@ local function symbol(entry1, entry2)
   else
     return start1 < start2
   end
-
-
-
-  return true
 end
 
 local function lexicographical(entry1, entry2)
