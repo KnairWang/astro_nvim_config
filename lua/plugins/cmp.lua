@@ -45,6 +45,24 @@ local function prioritize(kind, higher)
   end
 end
 
+local function symbol(entry1, entry2)
+  local word1 = entry1:get_word()
+  local word2 = entry2:get_word()
+
+  local start1, end1 = string.find(word1, "%w+")
+  local start2, end2 = string.find(word2, "%w+")
+
+  if start1 == start2 then
+    return nil
+  else
+    return start1 < start2
+  end
+
+
+
+  return true
+end
+
 local function lexicographical(entry1, entry2)
   local word1 = entry1:get_word()
   local word2 = entry2:get_word()
@@ -111,6 +129,7 @@ return {
       priority_weight = 2,
       comparators = {
         cmp.config.compare.exact,
+        symbol,
 
         prioritize(types.lsp.CompletionItemKind.Snippet, false),
 
@@ -127,7 +146,7 @@ return {
         cmp.config.compare.kind,
 
         cmp.config.compare.scopes,
-        cmp.config.compare.sort_text,
+        -- cmp.config.compare.sort_text,
         -- cmp.config.compare.locality,
         -- cmp.config.compare.order,
 
