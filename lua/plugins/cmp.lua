@@ -46,11 +46,13 @@ local function prioritize(kind, higher)
 end
 
 local function lexicographical(entry1, entry2)
-  if entry1:get_word() and entry2:get_word() then
-    local diff = vim.stricmp(entry1:get_word(), entry2:get_word())
-    if diff < 0 then
+  local word1 = entry1:get_word()
+  local word2 = entry2:get_word()
+  if word1 and word2 then
+    local order = vim.stricmp(word1, word2)
+    if order < 0 then
       return true
-    elseif diff > 0 then
+    elseif order > 0 then
       return false
     end
   end
@@ -125,7 +127,7 @@ return {
         cmp.config.compare.kind,
 
         cmp.config.compare.scopes,
-        -- cmp.config.compare.sort_text,
+        cmp.config.compare.sort_text,
         -- cmp.config.compare.locality,
         -- cmp.config.compare.order,
 
