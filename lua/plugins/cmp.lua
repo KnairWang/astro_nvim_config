@@ -48,14 +48,12 @@ end
 local function symbol(entry1, entry2)
   local word1 = entry1:get_word()
   local word2 = entry2:get_word()
-
-  local start1, end1 = string.find(word1, "%w+")
-  local start2, end2 = string.find(word2, "%w+")
-
-  if start1 == start2 then
-    return nil
-  else
-    return start1 < start2
+  if word1 and word2 then
+    local start1 = string.find(word1, "%w+")
+    local start2 = string.find(word2, "%w+")
+    if type(start1) == "number" and type(start2) == "number" and start1 ~= start2 then
+      return start1 < start2
+    end
   end
 end
 
@@ -64,13 +62,10 @@ local function lexicographical(entry1, entry2)
   local word2 = entry2:get_word()
   if word1 and word2 then
     local order = vim.stricmp(word1, word2)
-    if order < 0 then
-      return true
-    elseif order > 0 then
-      return false
+    if type(order) == "number" and order ~= 0 then
+      return order < 0
     end
   end
-  return nil
 end
 
 local function abbreviateString(str, maxwidth, ellipsis_char)
