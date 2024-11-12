@@ -119,31 +119,36 @@ return {
     opts.sorting = {
       priority_weight = 2,
       comparators = {
+        -- cmp.config.compare.offset,
         cmp.config.compare.exact,
         symbol,
 
         prioritize(types.lsp.CompletionItemKind.Snippet, false),
+        -- prioritize(types.lsp.CompletionItemKind.Module, false),
 
-        prioritize(types.lsp.CompletionItemKind.Variable, true),
-        prioritize(types.lsp.CompletionItemKind.Field, true),
-
-        prioritize(types.lsp.CompletionItemKind.Property, true),
-        prioritize(types.lsp.CompletionItemKind.Method, true),
-        prioritize(types.lsp.CompletionItemKind.Function, true),
-
-        prioritize(types.lsp.CompletionItemKind.Class, true),
-        prioritize(types.lsp.CompletionItemKind.Struct, true),
-
-        prioritize(types.lsp.CompletionItemKind.Module, true),
-
-        cmp.config.compare.kind,
-
-        cmp.config.compare.scopes,
-        -- cmp.config.compare.sort_text,
+        -- prioritize(types.lsp.CompletionItemKind.EnumMember, true),
         -- cmp.config.compare.locality,
         -- cmp.config.compare.order,
+        -- cmp.config.compare.score,
 
-        cmp.config.compare.score,
+        -- prioritize(types.lsp.CompletionItemKind.Variable, true),
+        -- prioritize(types.lsp.CompletionItemKind.Field, true),
+
+        -- prioritize(types.lsp.CompletionItemKind.Property, true),
+        -- prioritize(types.lsp.CompletionItemKind.Method, true),
+        -- prioritize(types.lsp.CompletionItemKind.Function, true),
+
+        -- prioritize(types.lsp.CompletionItemKind.Enum, true),
+        -- prioritize(types.lsp.CompletionItemKind.Class, true),
+        -- prioritize(types.lsp.CompletionItemKind.Struct, true),
+
+
+        -- cmp.config.compare.kind,
+
+        -- cmp.config.compare.scopes,
+        cmp.config.compare.sort_text,
+        -- cmp.config.compare.order,
+
         -- cmp.config.compare.length,
         -- cmp.config.compare.offset,
         -- cmp.config.compare.recently_used,
