@@ -3,7 +3,7 @@ return {
   opts = {
     direction = 'float',
     float_opts = {
-      border = 'shadow'
+      border = 'double'
     },
   }
 }
