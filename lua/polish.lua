@@ -1,10 +1,10 @@
-vim.o.guifont = "Hack Nerd Font Mono:h12"
+-- vim.o.guifont = "Hack Nerd Font Mono:h11"
 
 if vim.g.neovide then
   -- Put anything you want to happen only in Neovide here
   -- vim.o.guifont = "Hack Nerd Font Mono,Symbols Nerd Font Mono:h12"
 
-  vim.o.guifont = "Hack Nerd Font Mono:h12:#e-antialias:#h-none"
+  vim.o.guifont = "Hack Nerd Font Mono:h11:#e-antialias:#h-none"
   vim.opt.linespace = 0
 
   -- vim.g.neovide_text_gamma = 0.0
