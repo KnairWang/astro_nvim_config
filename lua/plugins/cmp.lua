@@ -111,7 +111,7 @@ return {
     -- }
 
     opts.performance = {
-      debounce = 100,
+      debounce = 500,
       throttle = 200,
       fetching_timeout = 5 * 1000,
     }
