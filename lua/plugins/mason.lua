@@ -8,7 +8,7 @@ return {
     -- overrides `require("mason-lspconfig").setup(...)`
     opts = {
       ensure_installed = {
-        "lua_ls",
+        -- "lua_ls",
         -- add more arguments for adding more language servers
       },
     },
@@ -19,7 +19,7 @@ return {
     -- overrides `require("mason-null-ls").setup(...)`
     opts = {
       ensure_installed = {
-        "stylua",
+        -- "stylua",
         -- add more arguments for adding more null-ls sources
       },
     },
@@ -29,7 +29,7 @@ return {
     -- overrides `require("mason-nvim-dap").setup(...)`
     opts = {
       ensure_installed = {
-        "python",
+        -- "python",
         -- add more arguments for adding more debuggers
       },
     },
